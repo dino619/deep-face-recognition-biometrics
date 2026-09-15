@@ -1,14 +1,14 @@
 # Deep Face Recognition with Modern Detectors and Embeddings
 
-Portfolio-ready face recognition project from a master's course in Image-Based Biometrics. This assignment extends the classical pipeline from Assignment 3 by adding deep face detectors and deep face embeddings, then comparing them against handcrafted features under the same gallery/probe identification protocol.
+This assignment builds on the classical face recognition pipeline from Assignment 3. Here I added deep face detectors and deep face embeddings, then compared them with the handcrafted features under the same gallery/probe setup.
 
-## Highlights
+## What I did
 
 - Compared classical descriptors against deep face embeddings for closed-set identification.
 - Evaluated Viola-Jones, YOLO face detection, and InsightFace detection.
 - Integrated ArcFace and FaceNet/VGGFace2 embeddings.
 - Used cosine similarity and CMC metrics for Rank-1 / Rank-5 evaluation.
-- Demonstrated a major performance jump from handcrafted descriptors to modern deep embeddings.
+- Compared how much recognition improves when using deep embeddings instead of handcrafted features.
 
 ## Results
 
@@ -39,7 +39,7 @@ Recognition:
 
 YOLO achieved the best localization quality and was used for the final cropped-face pipeline. Deep embeddings substantially outperformed classical descriptors.
 
-## Methodology
+## Steps
 
 1. Reuse the gallery/probe evaluation protocol from Assignment 3.
 2. Evaluate detector quality using mean IoU and detection rate.
@@ -67,7 +67,7 @@ main.tex                       # IEEE-style report source
 Dzaferagic_Dino_SB_Assignment_4.pdf
 ```
 
-## Tech Stack
+## Tools
 
 - Python
 - OpenCV
@@ -86,7 +86,3 @@ python scripts/run_experiments_a4.py
 ```
 
 The raw dataset, local virtual environments, duplicate Assignment 3 copy, and large model weights are excluded from GitHub publication.
-
-## CV Summary
-
-Extended a classical face-recognition system with YOLO detection, ArcFace, and FaceNet/VGGFace2 embeddings, achieving near-perfect closed-set identification on CelebA-HQ-small and demonstrating the performance gap between handcrafted features and deep biometric embeddings.
