@@ -1,0 +1,326 @@
+[
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 3,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 3,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 3,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 5,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 5,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 5,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.715010078355601,
+    "detection_rate": 0.9916666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 7,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.7083242478182048,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 7,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.7083242478182048,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.05,
+      "minNeighbors": 7,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.7083242478182048,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 3,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.706863188950602,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 3,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.706863188950602,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 3,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.706863188950602,
+    "detection_rate": 0.9833333333333333
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 5,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 5,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 5,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 7,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 7,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.1,
+      "minNeighbors": 7,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.7068455493100995,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 3,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.7036694197123128,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 3,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.7036694197123128,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 3,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.7036694197123128,
+    "detection_rate": 0.975
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 5,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.7036272804020307,
+    "detection_rate": 0.9666666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 5,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.7036272804020307,
+    "detection_rate": 0.9666666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 5,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.7036272804020307,
+    "detection_rate": 0.9666666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 7,
+      "minSize": [
+        24,
+        24
+      ]
+    },
+    "mean_iou": 0.6850928663826934,
+    "detection_rate": 0.9416666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 7,
+      "minSize": [
+        32,
+        32
+      ]
+    },
+    "mean_iou": 0.6850928663826934,
+    "detection_rate": 0.9416666666666667
+  },
+  {
+    "params": {
+      "scaleFactor": 1.2,
+      "minNeighbors": 7,
+      "minSize": [
+        40,
+        40
+      ]
+    },
+    "mean_iou": 0.6850928663826934,
+    "detection_rate": 0.9416666666666667
+  }
+]

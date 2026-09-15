@@ -1,0 +1,24 @@
+# Local environments and caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Duplicate copied project and raw datasets
+Assignment_3/
+data/
+
+# Large model weights
+*.pt
+*.pth
+*.onnx
+
+# Course/reference PDFs, keep my final report
+*.pdf
+!Dzaferagic_Dino_SB_Assignment_4.pdf
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz

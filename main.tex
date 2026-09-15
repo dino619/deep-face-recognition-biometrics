@@ -1,0 +1,177 @@
+﻿\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{datetime}
+\usepackage{microtype}
+\usepackage{parskip}
+
+\newdateformat{schoolyear}{%
+  \ifthenelse{\month > 9}
+    {\the\year/\the\numexpr\year+1-2000\relax}
+    {\the\numexpr\year-1\relax/\the\numexpr\year-2000\relax}
+}
+
+\begin{document}
+
+\title{Assignment \#4:\\Improving Face Recognition with Deep Detectors and Embeddings}
+
+\author{
+\IEEEauthorblockN{Dino Dzaferagic}
+\IEEEauthorblockA{\textit{IBB \schoolyear\today, FRI, UL}\\
+dd5102@student.uni-lj.si}
+}
+
+\maketitle
+
+% Per instructions: Abstract, Introduction, Related Work omitted.
+
+% ########################################
+\section{Methodology}
+The goal of Assignment~4 is to improve the face recognition system from Assignment~3 by incorporating deep-learning methods.
+The evaluated pipeline consists of: (i) face detection and cropping, (ii) feature extraction, and (iii) gallery--probe matching with cosine similarity and CMC evaluation.
+We compare classical descriptors (LBP\_ms, HOG, Dense SIFT) with deep face embeddings (FaceNet and ArcFace), where all embedding vectors are L2-normalized.
+Here, LBP\_ms denotes multi-scale LBP, arcface\_insightface denotes ArcFace embeddings from the InsightFace model, and facenet\_vggface2 denotes FaceNet embeddings with VGGFace2-pretrained weights.
+CMC summarizes identification accuracy as a function of rank; Rank-1 and Rank-5 report the percentage of probes whose true identity appears within the top-1 or top-5 matches.
+Each method is evaluated on (a) whole images and (b) a detection-based pipeline, where faces are cropped using the best detector.
+
+% ########################################
+\section{Experiments}
+\textbf{Dataset and protocol.} CelebA-HQ-small with 50 identities. The fixed split contains 475 training images and 412 test images.
+The test set is used for evaluation with 100 gallery images and 312 probe images (closed-set identification).
+
+\textbf{Detection.} Three detectors are evaluated: Viola--Jones (with grid-search tuning over \texttt{scaleFactor}, \texttt{minNeighbors}, and \texttt{minSize}), YOLO face detector (YOLOv8 face weights), and the InsightFace detector (buffalo\_l).
+Detection is measured with mean IoU (against ground-truth face boxes) and detection rate.
+The best detector (by mean IoU) is then used to crop faces for the pipeline evaluation.
+
+\textbf{Recognition.} We evaluate three classical feature extractors (LBP\_ms, HOG, Dense SIFT) and two deep embedding models (ArcFace from InsightFace ONNX and FaceNet/VGGFace2).
+Similarity is computed with cosine distance and performance is summarized using CMC with Rank-1 and Rank-5.
+
+% ########################################
+\section{Results and Discussion}
+
+\subsection{Results}
+\vspace{-0.2em}
+Table~\ref{tab:detection} shows that YOLO achieves the highest IoU while maintaining a high detection rate, so its crops are used in the pipeline.
+Table~\ref{tab:recognition} and Figs.~\ref{fig:cmc_whole_classical}--\ref{fig:cmc_pipeline_facenet} summarize identification accuracy on whole images and cropped faces.
+Deep embeddings dominate classical descriptors, with ArcFace and FaceNet reaching near-perfect Rank-1/5, while classical descriptors benefit from tighter crops.
+
+\begin{table}[t]
+\caption{Detection performance on the test set. YOLO achieves the highest mean IoU and is therefore used for pipeline crops.}
+\centering
+\scriptsize
+\begin{tabular}{lcc}
+\textbf{Detector} & \textbf{Mean IoU} & \textbf{Detection rate [\%]} \\
+\hline
+Viola--Jones & 0.686 & 96.84 \\
+YOLO (deep)  & \textbf{0.841} & 96.12 \\
+InsightFace  & 0.435 & 48.06 \\
+\end{tabular}
+\label{tab:detection}
+\vspace{-1.0em}
+\end{table}
+
+\vspace{-0.4em}
+\begin{table}[t]
+\caption{Recognition performance (CMC). Rank-1/5 on whole images and pipeline (YOLO crops). Pipeline uses 310/312 probes due to 2 failed detections.}
+\centering
+\scriptsize
+\begin{tabular}{lcccc}
+\textbf{Feature} &
+\textbf{Whole R1} & \textbf{Whole R5} &
+\textbf{Pipe R1} & \textbf{Pipe R5} \\
+\hline
+LBP\_ms                 & 11.2 & 30.1 & 15.2 & 36.1 \\
+HOG                    & 15.1 & 38.1 & 19.4 & 41.9 \\
+Dense SIFT             & 19.9 & 42.3 & 25.2 & 45.5 \\
+ArcFace (InsightFace)  & \textbf{100.0} & \textbf{100.0} & 97.1 & 98.4 \\
+FaceNet (VGGFace2)     & 95.2 & \textbf{100.0} & \textbf{97.4} & \textbf{98.7} \\
+\end{tabular}
+\label{tab:recognition}
+\vspace{-1.0em}
+\end{table}
+
+% --- Combined classical CMCs (whole + pipeline) ---
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_classical_whole_combined.png}
+\vspace{-0.6em}
+\caption{CMC curves on whole images for classical features (LBP\_ms, HOG, Dense SIFT).}
+\label{fig:cmc_whole_classical}
+\vspace{-0.9em}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_classical_pipeline_combined.png}
+\vspace{-0.6em}
+\caption{CMC curves for the pipeline (YOLO crops) for classical features (LBP\_ms, HOG, Dense SIFT).}
+\label{fig:cmc_pipeline_classical}
+\vspace{-0.9em}
+\end{figure}
+
+% --- Deep models (standalone plots) ---
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_whole_arcface_insightface.png}
+\vspace{-0.6em}
+\caption{CMC curve for ArcFace on whole images.}
+\label{fig:cmc_whole_arcface}
+\vspace{-0.7em}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_pipeline_arcface_insightface.png}
+\vspace{-0.6em}
+\caption{CMC curve for ArcFace on the YOLO-cropped pipeline.}
+\label{fig:cmc_pipeline_arcface}
+\vspace{-0.7em}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_whole_facenet_vggface2.png}
+\vspace{-0.6em}
+\caption{CMC curve for FaceNet (VGGFace2) on whole images.}
+\label{fig:cmc_whole_facenet}
+\vspace{-0.7em}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figs/cmc_pipeline_facenet_vggface2.png}
+\vspace{-0.6em}
+\caption{CMC curve for FaceNet (VGGFace2) on the YOLO-cropped pipeline.}
+\label{fig:cmc_pipeline_facenet}
+\vspace{-0.7em}
+\end{figure}
+
+\subsection{Discussion}
+YOLO achieves the best localization accuracy (Table~\ref{tab:detection}), so it is used for face cropping in the pipeline.
+Classical descriptors benefit from tighter face crops (Table~\ref{tab:recognition}, Fig.~\ref{fig:cmc_pipeline_classical}) because background and pose variability are reduced.
+Deep embeddings dominate performance: ArcFace reaches perfect Rank-1 on whole images and remains near-perfect in the pipeline, while FaceNet also achieves very high accuracy.
+The InsightFace detector produced a much lower detection rate, likely due to default thresholds or detector configuration mismatch for this dataset.
+The slight differences between whole-image and pipeline results are expected due to occasional detection failures (310 probes used) and sensitivity to crop/resizing.
+
+% ########################################
+\section{Conclusion}
+This assignment improved the baseline face recognition system by evaluating multiple detectors and integrating deep embedding models.
+YOLO was the best detector by mean IoU and produced the strongest crops for pipeline recognition.
+Classical methods improved modestly after cropping, while deep methods (ArcFace and FaceNet) achieved near-perfect identification, substantially outperforming handcrafted features.
+
+% No bibliography required unless you add citations.
+% \bibliographystyle{IEEEtran}
+% \bibliography{report}
+
+\end{document}

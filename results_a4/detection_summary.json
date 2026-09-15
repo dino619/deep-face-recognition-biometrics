@@ -1,0 +1,20 @@
+{
+  "best": "yolo",
+  "summary": [
+    {
+      "name": "viola_jones",
+      "mean_iou": 0.6856000336158534,
+      "detection_rate": 0.9684466019417476
+    },
+    {
+      "name": "yolo",
+      "mean_iou": 0.8405011744069573,
+      "detection_rate": 0.9611650485436893
+    },
+    {
+      "name": "insightface",
+      "mean_iou": 0.43454167498430113,
+      "detection_rate": 0.48058252427184467
+    }
+  ]
+}
